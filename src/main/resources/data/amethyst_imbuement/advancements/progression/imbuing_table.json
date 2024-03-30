@@ -16,10 +16,7 @@
 		}
 	},
 	"used_table":{
-		"trigger": "fzzy_core:advancement",
-		"conditions":{
-			"advancement": "amethyst_imbuement:imbuing_table"
-		}
+		"trigger": "amethyst_imbuement:imbuing_use"
 	}
 },
 "requirements": [

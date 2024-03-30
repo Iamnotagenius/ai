@@ -5,7 +5,7 @@
 		"conditions":{
 			"advancements": [
 				"amethyst_imbuement:progression/imbued_jewelry",
-				"amethyst_imbuement:totem"
+				"amethyst_imbuement:progression/totem_guide"
 			]
 		}
 	}

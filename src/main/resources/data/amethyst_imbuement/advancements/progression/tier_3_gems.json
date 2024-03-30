@@ -11,9 +11,17 @@
 		}
 	},
 	"got_gem":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:crystal_master"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:ametrine",
+						"amethyst_imbuement:tigers_eye",
+						"amethyst_imbuement:energetic_opal"
+					]
+				}
+			]
 		}
 	}
 },

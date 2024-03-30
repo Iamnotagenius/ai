@@ -8,9 +8,15 @@
 		}
 	},
 	"got_steel":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:steel_ingot"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:steel_ingot"
+					]
+				}
+			]
 		}
 	},
 	"got_diamond":{

@@ -24,16 +24,18 @@
 		},
 		"hurt_by_elemental":{
 			"trigger": "minecraft:entity_hurt_player",
-			"conditions":{
-				"source_entity": {
-					"type": "amethyst_imbuement:sardonyx_elemental"
+			"conditions": {
+				"damage": {
+					"source_entity": {
+						"type": "amethyst_imbuement:sardonyx_elemental"
+					}
 				}
 			}
 		},
 		"completed_progression": {
 			"trigger": "fzzy_core:advancement",
 			"conditions":{
-				"advancement": "amethyst_imbuement:progression/sardonyx_elemental"
+				"advancement": "amethyst_imbuement:progression/sardonyx_elemental_2"
 			}
 		}
 	},

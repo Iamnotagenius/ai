@@ -11,9 +11,18 @@
 		}
 	},
 	"got_gem":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:crystal_adept"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:opal",
+						"amethyst_imbuement:moonstone",
+						"amethyst_imbuement:garnet",
+						"amethyst_imbuement:pyrite"
+					]
+				}
+			]
 		}
 	}
 },

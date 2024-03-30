@@ -4,9 +4,15 @@
 		"trigger": "amethyst_imbuement:unlock_book"
 	},
 	"got_spellcasters_focus":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:focus"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:spellcasters_focus"
+					]
+				}
+			]
 		}
 	}
 },

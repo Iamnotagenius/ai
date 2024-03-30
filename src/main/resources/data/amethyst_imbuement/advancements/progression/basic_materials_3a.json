@@ -8,9 +8,15 @@
 		}
 	},
 	"got_copper":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:beryl_copper_ingot"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:beryl_copper_ingot"
+					]
+				}
+			]
 		}
 	},
 	"got_amethyst":{

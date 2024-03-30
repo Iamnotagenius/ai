@@ -14,12 +14,25 @@
 		"conditions":{
 			"advancement": "amethyst_imbuement:spells/magic_missile"
 		}
+	},
+	"got_scepter":{
+		"trigger": "minecraft:inventory_changed",
+		"conditions":{
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:opaline_scepter"
+					]
+				}
+			]
+		}
 	}
 },
 "requirements": [
 	[
 		"unlock",
-		"got_basic_spell"
+		"got_basic_spell",
+		"got_scepter"
 	]
 ]
 }

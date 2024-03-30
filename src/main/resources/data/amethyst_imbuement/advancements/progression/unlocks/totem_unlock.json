@@ -1,10 +1,14 @@
 {
 "criteria":{
 	"unlock":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancements": [
-				"amethyst_imbuement:totem"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:totem_of_amethyst"
+					]
+				}
 			]
 		}
 	},

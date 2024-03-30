@@ -11,9 +11,15 @@
 		}
 	},
 	"got_golden_heart":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:golden_heart"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:golden_heart"
+					]
+				}
+			]
 		}
 	}
 },

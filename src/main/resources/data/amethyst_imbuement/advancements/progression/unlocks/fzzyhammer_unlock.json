@@ -4,9 +4,15 @@
 		"trigger": "amethyst_imbuement:unlock_book"
 	},
 	"hammer":{
-		"trigger": "fzzy_core:advancement",
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:scepter_path/path_of_hammer"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:fzzyhammer"
+					]
+				}
+			]
 		}
 	}
 },

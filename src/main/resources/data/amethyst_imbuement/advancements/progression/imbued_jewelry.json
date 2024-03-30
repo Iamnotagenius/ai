@@ -6,9 +6,21 @@
 	"got_imbued_jewelry":{
 		"trigger": "fzzy_core:advancement",
 		"conditions":{
-			"advancements": [
-				"amethyst_imbuement:trinketeer",
-				"amethyst_imbuement:lapidary"
+			"advancement": "amethyst_imbuement:trinketeer"
+		}
+	},
+	"got_crystal":{
+		"trigger": "minecraft:inventory_changed",
+		"conditions":{
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:imbued_amulet",
+						"amethyst_imbuement:imbued_headband",
+						"amethyst_imbuement:imbued_ring",
+						"amethyst_imbuement:imbued_ward"
+					]
+				}
 			]
 		}
 	}
@@ -16,7 +28,8 @@
 "requirements": [
 	[
 		"unlock",
-		"got_imbued_jewelry"
+		"got_imbued_jewelry",
+		"got_crystal"
 	]
 ]
 }

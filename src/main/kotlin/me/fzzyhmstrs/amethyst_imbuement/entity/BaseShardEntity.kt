@@ -26,7 +26,7 @@ open class BaseShardEntity(entityType: EntityType<out BaseShardEntity?>, world: 
     override var entityEffects: AugmentEffect = AugmentEffect().withDamage(6F).withAmplifier(0)
     private val struckEntities: MutableList<UUID> = mutableListOf()
     protected var scepterAugment: ScepterAugment? = RegisterEnchantment.ICE_SHARD
-    
+
     fun setAugment(aug: ScepterAugment?){
         this.scepterAugment = aug
     }

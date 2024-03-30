@@ -1271,7 +1271,7 @@ class ImbuingTableScreenHandler(
         pow,
         pow) {
 
-        override val type: Int = -5
+        override val type: Int = 5
 
         override fun bufClassWriter(buf: PacketByteBuf) {
             buf.writeString(augment)

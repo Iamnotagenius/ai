@@ -3,17 +3,23 @@
 	"unlock":{
 		"trigger": "amethyst_imbuement:unlock_book"
 	},
-	"progressed":{
-		"trigger": "fzzy_core:advancement",
+	"got_totem":{
+		"trigger": "minecraft:inventory_changed",
 		"conditions":{
-			"advancement": "amethyst_imbuement:totem"
+			"items":[
+				{
+					"items":[
+						"amethyst_imbuement:totem_of_amethyst"
+					]
+				}
+			]
 		}
 	}
 },
 "requirements": [
 	[
 		"unlock",
-		"progressed"
+		"got_totem"
 	]
 ]
 }

@@ -6,11 +6,19 @@
 			"advancement": "amethyst_imbuement:progression/imbuing_table"
 		}
 	},
-	"got_gem":{
-		"trigger": "fzzy_core:advancement",
-		"conditions":{
-			"advancement": "minecraft:nether/summon_wither"
-		}
+	"got_gem": {
+		"conditions": {
+			"entity": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"type": "minecraft:wither"
+					}
+				}
+			]
+		},
+		"trigger": "minecraft:summoned_entity"
 	}
 }
 }
