@@ -21,5 +21,4 @@ object RegisterWorldgen {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),GenerationStep.Feature.UNDERGROUND_DECORATION, TIGERS_EYE_BLACKSTONE_PLACED_KEY)
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),GenerationStep.Feature.UNDERGROUND_ORES, TIGERS_EYE_BASALT_PLACED_KEY)
     }
-
 }

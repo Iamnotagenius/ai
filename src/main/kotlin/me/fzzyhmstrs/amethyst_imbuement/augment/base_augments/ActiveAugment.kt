@@ -27,7 +27,7 @@ open class ActiveAugment(weight: Rarity,mxLvl: Int = 1, vararg slot: EquipmentSl
     }
 
     override fun checkEnabled(): Boolean{
-        return AiConfig.trinkets.enabledAugments.getOrDefault(id.toString(),true)
+        return AiConfig.trinkets.enabledAugments.get().getOrDefault(id.toString(),true)
     }
 
     override fun isAcceptableItem(stack: ItemStack): Boolean {

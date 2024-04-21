@@ -19,7 +19,7 @@ open class EquipmentAugment(weight: Rarity, mxLvl: Int = 1, target: EnchantmentT
     }
 
     override fun checkEnabled(): Boolean{
-        return AiConfig.trinkets.enabledAugments.getOrDefault(id.toString(),true)
+        return AiConfig.trinkets.enabledAugments.get().getOrDefault(id.toString(),true)
     }
 
 

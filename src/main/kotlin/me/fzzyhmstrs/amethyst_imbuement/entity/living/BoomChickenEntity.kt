@@ -4,6 +4,7 @@ import me.fzzyhmstrs.amethyst_core.entity_util.ModifiableEffectEntity
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
 import me.fzzyhmstrs.amethyst_core.scepter_util.SpellDamageSource
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEntity
 import me.fzzyhmstrs.fzzy_core.coding_util.compat.FzzyDamage
@@ -74,7 +75,8 @@ class BoomChickenEntity(entityType:EntityType<BoomChickenEntity>, world: World):
         goalSelector.add(4, WanderAroundFarGoal(this, 1.0))
         goalSelector.add(5, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
         goalSelector.add(6, LookAroundGoal(this))
-        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, true) { entity: LivingEntity -> AiConfig.entities.shouldItHit(owner,entity,AiConfig.Entities.Options.NON_FRIENDLY_NON_GOLEM,RegisterEnchantment.TORRENT_OF_BEAKS) })
+        targetSelector.add(1, ActiveTargetGoal(this, LivingEntity::class.java, true) { entity: LivingEntity -> AiConfig.entities.shouldItHit(owner,entity,
+            EntitiesConfig.Options.NON_FRIENDLY_NON_GOLEM,RegisterEnchantment.TORRENT_OF_BEAKS) })
         targetSelector.add(2, RevengeGoal(this, *arrayOfNulls(0)))
     }
 
@@ -180,7 +182,7 @@ class BoomChickenEntity(entityType:EntityType<BoomChickenEntity>, world: World):
         val attacker = source.attacker
         if (attacker is LivingEntity){
             val spell = if (source is SpellDamageSource) source.getSpell() else null
-            if(!AiConfig.entities.shouldItHitBase(attacker, this,AiConfig.Entities.Options.NONE, spell)) return false
+            if(!AiConfig.entities.shouldItHitBase(attacker, this, EntitiesConfig.Options.NONE, spell)) return false
         }
         return super.damage(source, amount)
     }

@@ -49,8 +49,8 @@ class SpellScrollItem(settings: Settings): Item(settings), SpellCasting, Reactan
             nbt.putString(RegisterScepter.SPELL_SCROLL.SPELL_TYPE,type.str())
             nbt.putFloat(RegisterScepter.SPELL_SCROLL.MODEL_KEY,33f)
             nbt.putInt(RegisterScepter.SPELL_SCROLL.SPENT_USES,0)
-            nbt.putInt(RegisterScepter.SPELL_SCROLL.TOTAL_USES,AiConfig.items.scroll.uses.get()[0])
-            nbt.putInt(RegisterScepter.SPELL_SCROLL.SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[0])
+            nbt.putInt(RegisterScepter.SPELL_SCROLL.TOTAL_USES,AiConfig.items.scroll.casts.tierOne.get())
+            nbt.putInt(RegisterScepter.SPELL_SCROLL.SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierOne.get())
             if (disenchanted) nbt.putBoolean(RegisterScepter.SPELL_SCROLL.DISENCHANTED, true)
             return stack
         }
@@ -114,36 +114,36 @@ class SpellScrollItem(settings: Settings): Item(settings), SpellCasting, Reactan
         val rnd = world.random.nextFloat()
         var modelKey = 0f
         modelKey += if (rnd < 0.025){
-            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.uses.get()[2])
+            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.casts.tierThree.get())
             128f
         } else if (rnd < 0.15){
-            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.uses.get()[1])
+            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.casts.tierTwo.get())
             64f
         } else {
-            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.uses.get()[0])
+            nbt.putInt(TOTAL_USES,AiConfig.items.scroll.casts.tierOne.get())
             32f
         }
         val rnd2 = world.random.nextFloat()
         modelKey +=if (rnd2 < 0.01){
-            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[4])
+            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierFive.get())
             5f
         } else if (rnd2 < 0.033333){
-            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[3])
+            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierFour.get())
             4f
         }else if (rnd2 < 0.1){
-            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[2])
+            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierThree.get())
             3f
         }else if (rnd2 < 0.25){
-            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[1])
+            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierTwo.get())
             2f
         } else {
-            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.levels.get()[0])
+            nbt.putInt(SCROLL_LEVEL, AiConfig.items.scroll.spellLevels.tierOne.get())
             1f
         }
         nbt.putInt(SPENT_USES,0)
         nbt.putFloat(MODEL_KEY, modelKey)
     }
-    
+
     override fun canReact(stack: ItemStack, reagents: List<ItemStack>, player: PlayerEntity?, type: RecipeType<*>?): Boolean {
         if (reagents.isEmpty()) return true
         if (reagents.size == 1 && reagents[0].item is SpellScrollItem) return true
@@ -161,7 +161,7 @@ class SpellScrollItem(settings: Settings): Item(settings), SpellCasting, Reactan
         }
         return fails == 0
     }
-    
+
     override fun react(stack: ItemStack, reagents: List<ItemStack>, player: PlayerEntity?, type: RecipeType<*>?) {
         val nbt = stack.orCreateNbt
         for (reagent in reagents){

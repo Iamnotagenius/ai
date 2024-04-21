@@ -1,6 +1,10 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
-import me.fzzyhmstrs.fzzy_config.validated_field.*
+import me.fzzyhmstrs.fzzy_config.validation.minecraft.ValidatedIngredient
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedDouble
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedLong
 import me.fzzyhmstrs.fzzy_core.mana_util.ManaItemMaterial
 
 /**
@@ -17,7 +21,7 @@ open class ScepterToolMaterial protected constructor(
     enchantabilityDefault: ValidatedInt,
     repairIngredientDefault: ValidatedIngredient
 )
-: 
+:
 ValidatedToolMaterial(
     durabilityDefault,
     miningSpeedDefault,
@@ -26,7 +30,7 @@ ValidatedToolMaterial(
     enchantabilityDefault,
     repairIngredientDefault)
 ,
-ManaItemMaterial 
+ManaItemMaterial
 {
     var attackSpeed = attackSpeedDefault
     var healCooldown = healCooldownDefault
@@ -74,11 +78,11 @@ ManaItemMaterial
         override fun builderClass(): Builder{
             return this
         }
-        
+
         override fun build(): ScepterToolMaterial{
             return ScepterToolMaterial(tier, aS,hC, d, mSM, aD, mL, e, rI)
         }
-        
+
     }
-  
+
 }

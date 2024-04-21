@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.amethyst_imbuement.effects
 
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterEnchantment
 import me.fzzyhmstrs.fzzy_core.coding_util.compat.FzzyDamage
 import net.minecraft.entity.Entity
@@ -32,7 +33,7 @@ class LightningAuraStatusEffect(statusEffectCategory: StatusEffectCategory, i: I
     override fun applyUpdateEffect(entity: LivingEntity, amplifier: Int) {
         val world = entity.world as? ServerWorld ?: return
         val box = Box(entity.pos.add(6.0,6.0,6.0),entity.pos.subtract(6.0,6.0,6.0))
-        val entities = world.getOtherEntities(entity, box) { (AiConfig.entities.shouldItHit(entity, it,AiConfig.Entities.Options.HOSTILE_ONLY, RegisterEnchantment.LIGHTNING_AURA) && it is LivingEntity) }
+        val entities = world.getOtherEntities(entity, box) { (AiConfig.entities.shouldItHit(entity, it, EntitiesConfig.Options.HOSTILE_ONLY, RegisterEnchantment.LIGHTNING_AURA) && it is LivingEntity) }
         if (entities.isNotEmpty())
             world.playSound(null,entity.blockPos, SoundEvents.ITEM_TRIDENT_THUNDER, SoundCategory.NEUTRAL,0.2f,1.0f)
         for (e in entities){

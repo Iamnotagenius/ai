@@ -7,6 +7,7 @@ import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentDatapoint
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.MinorSupportAugment
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.mixins.MobEntityAccessor
 import me.fzzyhmstrs.fzzy_core.coding_util.PerLvlI
 import me.fzzyhmstrs.fzzy_core.coding_util.PersistentEffectHelper
@@ -45,7 +46,7 @@ class PersuadeAugment: MinorSupportAugment(ScepterTier.TWO,11), PersistentEffect
         effects: AugmentEffect
     ): Boolean {
         return if(target != null) {
-            if (AiConfig.entities.shouldItHit(user,target,AiConfig.Entities.Options.NON_BOSS,this)) {
+            if (AiConfig.entities.shouldItHit(user,target, EntitiesConfig.Options.NON_BOSS,this)) {
                 if (target is MobEntity) {
                     val targetSelector = (target as MobEntityAccessor).targetSelector
                     val targets = targetSelector.goals.toMutableSet()

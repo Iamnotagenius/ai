@@ -1,14 +1,12 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterItem
-import me.fzzyhmstrs.fzzy_config.validated_field.ValidatedArmorMaterial
-import net.minecraft.item.Items
-import net.minecraft.recipe.Ingredient
+import me.fzzyhmstrs.amethyst_imbuement.AI
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 
 object AiArmorMaterialsConfig{
     val AMETRINE = ValidatedArmorMaterial.Builder("ai_ametrine",SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.AMETRINE))
+        .repairIngredient(AI.identity("ametrine"))
         .enchantability(18)
         .protectionAmounts(4,9,7,4)
         .durabilityMultiplier(39)
@@ -16,14 +14,14 @@ object AiArmorMaterialsConfig{
         .toughness(3.2f)
         .build()
     val STEEL = ValidatedArmorMaterial.Builder("ai_steel",SoundEvents.ITEM_ARMOR_EQUIP_IRON)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.STEEL_INGOT))
+        .repairIngredient(AI.identity("steel_ingot"))
         .enchantability(10)
         .protectionAmounts(2,7,6,2)
         .durabilityMultiplier(20)
         .toughness(1.0f)
         .build()
     val GARNET = ValidatedArmorMaterial.Builder("ai_garnet",SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GARNET))
+        .repairIngredient(AI.identity("garnet"))
         .enchantability(12)
         .protectionAmounts(3,8,6,3)
         .durabilityMultiplier(55,200)
@@ -31,7 +29,7 @@ object AiArmorMaterialsConfig{
         .toughness(2.0f)
         .build()
     val GLOWING = ValidatedArmorMaterial.Builder("ai_glowing",SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GLOWING_FRAGMENT))
+        .repairIngredient(AI.identity("glowing_fragment"))
         .enchantability(35)
         .protectionAmounts(3,9,7,3)
         .durabilityMultiplier(14)
@@ -39,13 +37,13 @@ object AiArmorMaterialsConfig{
         .toughness(3f)
         .build()
     val SHIMMERING = ValidatedArmorMaterial.Builder("ai_shimmering",SoundEvents.ITEM_ARMOR_EQUIP_LEATHER)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.SHIMMERING_FABRIC))
+        .repairIngredient(AI.identity("shimmering_fabric"))
         .enchantability(25)
         .protectionAmounts(2,6,5,2)
         .durabilityMultiplier(12)
         .build()
     val SOULWOVEN = ValidatedArmorMaterial.Builder("ai_soulwoven",SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE)
-        .repairIngredient(Ingredient.ofItems(Items.CRYING_OBSIDIAN))
+        .repairIngredient(Identifier("crying_obsidian"))
         .enchantability(25)
         .protectionAmounts(3,8,6,3)
         .durabilityMultiplier(25)

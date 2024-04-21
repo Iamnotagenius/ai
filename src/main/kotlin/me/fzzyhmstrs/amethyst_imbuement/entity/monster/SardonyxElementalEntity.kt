@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.amethyst_imbuement.entity.monster
 
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.entity.goal.SardonyxElementalAttackGoal
 import me.fzzyhmstrs.amethyst_imbuement.entity.goal.SardonyxElementalPriorityTargetGoal
 import me.fzzyhmstrs.amethyst_imbuement.entity.living.PlayerCreatedConstructEntity
@@ -312,7 +313,7 @@ class SardonyxElementalEntity(entityType: EntityType<out HostileEntity>?, world:
         attackTicksLeft = 10
         world.sendEntityStatus(this, 4.toByte())
         spellOnAttack(target)
-        if (!AiConfig.entities.shouldItHit(this,target,AiConfig.Entities.Options.NONE)) return false
+        if (!AiConfig.entities.shouldItHit(this,target,EntitiesConfig.Options.NONE)) return false
         val i: Int = EnchantmentHelper.getFireAspect(this)
         var f = this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE).toFloat()
         var g = this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_KNOCKBACK).toFloat()
@@ -337,7 +338,7 @@ class SardonyxElementalEntity(entityType: EntityType<out HostileEntity>?, world:
             }
             val list = world.getNonSpectatingEntities(LivingEntity::class.java, target.boundingBox.expand(2.0, 0.25, 2.0))
             for (splashTarget in list){
-                if (AiConfig.entities.shouldItHit(this,splashTarget,AiConfig.Entities.Options.NONE)){
+                if (AiConfig.entities.shouldItHit(this,splashTarget, EntitiesConfig.Options.NONE)){
                     if (splashTarget.damage(FzzyDamage.mobAttack(this), f/2f)){
                         if (g > 0.0f && splashTarget is LivingEntity) {
                             splashTarget.takeKnockback(

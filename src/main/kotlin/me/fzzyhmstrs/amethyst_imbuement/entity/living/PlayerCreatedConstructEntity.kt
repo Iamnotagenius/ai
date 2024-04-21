@@ -7,6 +7,7 @@ import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentEffect
 import me.fzzyhmstrs.amethyst_core.scepter_util.SpellDamageSource
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.ScepterAugment
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.entity.goal.CallForConstructHelpGoal
 import me.fzzyhmstrs.amethyst_imbuement.entity.goal.FleeCreeperGoal
 import me.fzzyhmstrs.amethyst_imbuement.entity.goal.FollowSummonerGoal
@@ -127,8 +128,10 @@ open class PlayerCreatedConstructEntity(entityType: EntityType<out PlayerCreated
         goalSelector.add(8, LookAroundGoal(this))
 
         targetSelector.add(2, RevengeGoal(this, *arrayOfNulls(0)))
-        targetSelector.add(3, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, false) { entity: LivingEntity -> shouldAngerAt(entity) || AiConfig.entities.shouldItHit(owner,entity,AiConfig.Entities.Options.NON_FRIENDLY_NON_GOLEM,getSpell()) })
-        targetSelector.add(3, ActiveTargetGoal(this, MobEntity::class.java, 5, false, false) { entity: LivingEntity -> AiConfig.entities.shouldItHit(owner,entity,AiConfig.Entities.Options.NON_FRIENDLY_NON_GOLEM,getSpell()) && ((entity as? CreeperEntity)?.isIgnited != true) })
+        targetSelector.add(3, ActiveTargetGoal(this, PlayerEntity::class.java, 10, true, false) { entity: LivingEntity -> shouldAngerAt(entity) || AiConfig.entities.shouldItHit(owner,entity,
+            EntitiesConfig.Options.NON_FRIENDLY_NON_GOLEM,getSpell()) })
+        targetSelector.add(3, ActiveTargetGoal(this, MobEntity::class.java, 5, false, false) { entity: LivingEntity -> AiConfig.entities.shouldItHit(owner,entity,
+            EntitiesConfig.Options.NON_FRIENDLY_NON_GOLEM,getSpell()) && ((entity as? CreeperEntity)?.isIgnited != true) })
         targetSelector.add(4, UniversalAngerGoal(this, true))
     }
 
@@ -239,7 +242,7 @@ open class PlayerCreatedConstructEntity(entityType: EntityType<out PlayerCreated
         val attacker = source.attacker
         if (attacker is LivingEntity){
             val spell = if (source is SpellDamageSource) source.getSpell() else null
-            if(!AiConfig.entities.shouldItHitBase(attacker, this,AiConfig.Entities.Options.NONE, spell)) return false
+            if(!AiConfig.entities.shouldItHitBase(attacker, this, EntitiesConfig.Options.NONE, spell)) return false
         }
         if (source.isIn(DamageTypeTags.ALWAYS_TRIGGERS_SILVERFISH)) {
             this.callForConstructHelpGoal.onHurt()
@@ -407,7 +410,7 @@ open class PlayerCreatedConstructEntity(entityType: EntityType<out PlayerCreated
         return Vec3d(0.0, (0.875f * standingEyeHeight).toDouble(), (this.width * 0.4f).toDouble())
     }
 
-    fun setConstructOwner(owner: LivingEntity?){
+    fun setConstructOwner(owner: LivingEntity?) {
         createdBy = owner?.uuid
         this.entityOwner = owner
         if (!trackingOwner && owner != null){

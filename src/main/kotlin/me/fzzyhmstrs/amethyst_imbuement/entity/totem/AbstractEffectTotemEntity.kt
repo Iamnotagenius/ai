@@ -2,6 +2,7 @@ package me.fzzyhmstrs.amethyst_imbuement.entity.totem
 
 import me.fzzyhmstrs.amethyst_core.scepter_util.SpellDamageSource
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.fzzy_core.registry.EventRegistry
 import net.minecraft.entity.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -92,7 +93,7 @@ abstract class AbstractEffectTotemEntity(
         val attacker = source.attacker
         if (attacker is LivingEntity){
             val spell = if (source is SpellDamageSource) source.getSpell() else null
-            if(!AiConfig.entities.shouldItHitBase(attacker, this, AiConfig.Entities.Options.NONE, spell)) return false
+            if(!AiConfig.entities.shouldItHitBase(attacker, this, EntitiesConfig.Options.NONE, spell)) return false
         }
         return super.damage(source, amount)
     }

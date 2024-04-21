@@ -44,11 +44,11 @@ class SpellcastersFocusItem(settings: Settings): CustomFlavorItem(settings), Mod
     internal val OPTION_3 = "option_3"
     internal val CHOSEN_OPTION = "last_chosen_option"
     private val tiers: Array<TierData> = arrayOf(
-        TierData("", Rarity.UNCOMMON,0, AiConfig.items.focus.tierXp.get()[0],1,-1),
-        TierData(".novice", Rarity.UNCOMMON,AiConfig.items.focus.tierXp.get()[0] + 1, AiConfig.items.focus.tierXp.get()[1],2,0),
-        TierData(".adept", Rarity.RARE,AiConfig.items.focus.tierXp.get()[1] + 1, AiConfig.items.focus.tierXp.get()[2],3,1),
-        TierData(".master", Rarity.RARE,AiConfig.items.focus.tierXp.get()[2] + 1, AiConfig.items.focus.tierXp.get()[3],4,2),
-        TierData(".savant", Rarity.EPIC,AiConfig.items.focus.tierXp.get()[3] + 1, -1,-1,3)
+        TierData("", Rarity.UNCOMMON,0, AiConfig.items.focus.xpPerTier.tierOne.get(),1,-1),
+        TierData(".novice", Rarity.UNCOMMON,AiConfig.items.focus.xpPerTier.tierOne.get() + 1, AiConfig.items.focus.xpPerTier.tierTwo.get(),2,0),
+        TierData(".adept", Rarity.RARE,AiConfig.items.focus.xpPerTier.tierTwo.get() + 1, AiConfig.items.focus.xpPerTier.tierThree.get(),3,1),
+        TierData(".master", Rarity.RARE,AiConfig.items.focus.xpPerTier.tierThree.get() + 1, AiConfig.items.focus.xpPerTier.tierFour.get(),4,2),
+        TierData(".savant", Rarity.EPIC,AiConfig.items.focus.xpPerTier.tierFour.get() + 1, -1,-1,3)
     )
 
     init{
@@ -103,7 +103,7 @@ class SpellcastersFocusItem(settings: Settings): CustomFlavorItem(settings), Mod
             }
         }
     }
-    
+
     override fun canReact(stack: ItemStack, reagents: List<ItemStack>, player: PlayerEntity?, type: RecipeType<*>?): Boolean {
         for (reagent in reagents) {
             if (reagent.item is MysticalGemItem && type == AltarRecipe.Type) {
@@ -112,7 +112,7 @@ class SpellcastersFocusItem(settings: Settings): CustomFlavorItem(settings), Mod
         }
         return true
     }
-    
+
     override fun react(stack: ItemStack, reagents: List<ItemStack>, player: PlayerEntity?, type: RecipeType<*>?) {
         for (reagent in reagents){
             val item = reagent.item
@@ -130,7 +130,7 @@ class SpellcastersFocusItem(settings: Settings): CustomFlavorItem(settings), Mod
             }
         }
     }
-    
+
     override fun use(world: World, user: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
         val stack = user.getStackInHand(hand)
         if (hand != Hand.MAIN_HAND) return TypedActionResult.fail(stack)

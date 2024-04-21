@@ -1,9 +1,7 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterItem
-import me.fzzyhmstrs.fzzy_config.validated_field.ValidatedToolMaterial
+import me.fzzyhmstrs.amethyst_imbuement.AI
 import net.fabricmc.yarn.constants.MiningLevels
-import net.minecraft.recipe.Ingredient
 
 object AiToolMaterialsConfig{
     val GARNET = ValidatedToolMaterial.Builder()
@@ -12,7 +10,7 @@ object AiToolMaterialsConfig{
         .attackDamage(3f)
         .miningLevel(3)
         .enchantability(12)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GARNET))
+        .repairIngredient(AI.identity("garnet"))
         .build()
     val GLOWING = ValidatedToolMaterial.Builder()
         .durability(333)
@@ -20,7 +18,7 @@ object AiToolMaterialsConfig{
         .attackDamage(4.5f)
         .miningLevel(MiningLevels.NETHERITE)
         .enchantability(12)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GARNET))
+        .repairIngredient(AI.identity("glowing_fragment"))
         .build()
     val STEEL = ValidatedToolMaterial.Builder()
         .durability(400)
@@ -28,7 +26,7 @@ object AiToolMaterialsConfig{
         .attackDamage(2.5f)
         .miningLevel(2)
         .enchantability(15)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.STEEL_INGOT))
+        .repairIngredient(AI.identity("steel_ingot"))
         .build()
     val AMETRINE = ValidatedToolMaterial.Builder()
         .durability(2550)
@@ -36,7 +34,7 @@ object AiToolMaterialsConfig{
         .attackDamage(5f)
         .miningLevel(MiningLevels.NETHERITE)
         .enchantability(18)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.AMETRINE))
+        .repairIngredient(AI.identity("ametrine"))
         .build()
     val GLISTERING = ValidatedToolMaterial.Builder()
         .durability(550)
@@ -44,6 +42,6 @@ object AiToolMaterialsConfig{
         .attackDamage(11f)
         .miningLevel(MiningLevels.DIAMOND)
         .enchantability(15)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GARNET))
+        .repairIngredient(AI.identity("garnet"))
         .build()
 }

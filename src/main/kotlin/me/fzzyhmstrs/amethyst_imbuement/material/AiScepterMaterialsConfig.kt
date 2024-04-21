@@ -1,9 +1,8 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
-import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterItem
+import me.fzzyhmstrs.amethyst_imbuement.AI
 import net.fabricmc.yarn.constants.MiningLevels
-import net.minecraft.item.Items
-import net.minecraft.recipe.Ingredient
+import net.minecraft.util.Identifier
 
 object AiScepterMaterialsConfig{
     ///// generic scepters /////
@@ -15,7 +14,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(0f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.BERYL_COPPER_INGOT))
+        .repairIngredient(AI.identity("beryl_copper_ingot"))
         .build()
     val SCEPTER_TIER_2 = ScepterToolMaterial.Builder(2)
         .attackSpeed(-3.0)
@@ -25,7 +24,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(0f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(Items.GOLD_INGOT))
+        .repairIngredient(Identifier("gold_ingot"))
         .build()
     val SCEPTER_TIER_3 = ScepterToolMaterial.Builder(3)
         .attackSpeed(-3.0)
@@ -35,7 +34,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(0f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(Items.NETHERITE_SCRAP))
+        .repairIngredient(Identifier("netherite_scrap"))
         .build()
 
     ///// special scepters /////
@@ -47,7 +46,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(2f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(Items.GOLD_INGOT))
+        .repairIngredient(Identifier("gold_ingot"))
         .build()
     val FZZYHAMMER = ScepterToolMaterial.Builder(3)
         .attackSpeed(-3.2)
@@ -57,7 +56,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(9.5f)
         .miningLevel(3)
         .enchantability(15)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.HEARTSTONE))
+        .repairIngredient(AI.identity("heartstone"))
         .build()
     val LETHALITY = ScepterToolMaterial.Builder(3)
         .attackSpeed(-2.7)
@@ -67,7 +66,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(4f)
         .miningLevel(1)
         .enchantability(35)
-        .repairIngredient(Ingredient.ofItems(Items.NETHERITE_SCRAP))
+        .repairIngredient(Identifier("netherite_scrap"))
         .build()
     val SCEPTER_OF_BLADES = ScepterToolMaterial.Builder(2)
         .attackSpeed(-2.7)
@@ -77,7 +76,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(1.5f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GLOWING_FRAGMENT))
+        .repairIngredient(AI.identity("glowing_fragment"))
         .build()
     val SCEPTER_OF_HARVESTS = ScepterToolMaterial.Builder(2)
         .attackSpeed(-3.0)
@@ -87,7 +86,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(0f)
         .miningLevel(MiningLevels.NETHERITE)
         .enchantability(15)
-        .repairIngredient(Ingredient.ofItems(Items.GOLD_INGOT))
+        .repairIngredient(Identifier("gold_ingot"))
         .build()
     val SCEPTER_OF_THE_VANGUARD = ScepterToolMaterial.Builder(2)
         .attackSpeed(-3.0)
@@ -97,7 +96,7 @@ object AiScepterMaterialsConfig{
         .attackDamage(2f)
         .miningLevel(1)
         .enchantability(35)
-        .repairIngredient(Ingredient.ofItems(RegisterItem.GLOWING_FRAGMENT))
+        .repairIngredient(AI.identity("glowing_fragment"))
         .build()
     val SCEPTER_SO_FOWL = ScepterToolMaterial.Builder(2)
         .attackSpeed(-3.0)
@@ -107,6 +106,6 @@ object AiScepterMaterialsConfig{
         .attackDamage(0f)
         .miningLevel(1)
         .enchantability(25)
-        .repairIngredient(Ingredient.ofItems(Items.COOKED_CHICKEN))
+        .repairIngredient(Identifier("cooked_chicken"))
         .build()
 }

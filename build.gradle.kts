@@ -30,7 +30,7 @@ repositories {
     }
     maven {
         name = "Ladysnake Libs"
-        url = uri("https://ladysnake.jfrog.io/artifactory/mods")
+        url = uri("https://maven.ladysnake.org/releases")
     }
     maven {
         name = "Patchouli Lib"
@@ -135,20 +135,13 @@ dependencies {
     }
 
     val fzzyConfigVersion: String by project
-    include(modImplementation(":fzzy_config-$fzzyConfigVersion"){
-            exclude("net.fabricmc.fabric-api")
-        }
-    )
+    modImplementation("maven.modrinth:fzzy-config:$fzzyConfigVersion")
 
     val palVersion: String by project
     modImplementation("io.github.ladysnake:PlayerAbilityLib:$palVersion"){
         exclude("net.fabricmc.fabric-api")
     }
     //include("io.github.ladysnake:PlayerAbilityLib:$palVersion")
-
-    val meVersion: String by project
-    implementation("com.github.llamalad7.mixinextras:mixinextras-fabric:$meVersion")
-    annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:$meVersion")
 
     val cmVersion: String by project
     implementation("com.github.Fallen-Breath:conditional-mixin:$cmVersion")
@@ -185,8 +178,6 @@ tasks {
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions { jvmTarget = javaVersion.toString() }
-        sourceCompatibility = javaVersion.toString()
-        targetCompatibility = javaVersion.toString()
     }
     jar {
         from("LICENSE") { rename { "${base.archivesName.get()}_${it}" } }

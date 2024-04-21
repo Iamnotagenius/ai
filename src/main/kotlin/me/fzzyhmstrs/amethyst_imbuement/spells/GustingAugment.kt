@@ -8,6 +8,7 @@ import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentDatapoint
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.MiscAugment
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterNetworking
 import me.fzzyhmstrs.fzzy_core.raycaster_util.RaycasterUtil
 import net.minecraft.entity.Entity
@@ -43,7 +44,7 @@ class GustingAugment: MiscAugment(ScepterTier.ONE,3){
         hit: HitResult?,
         effect: AugmentEffect
     ): Boolean {
-        val entityList = RaycasterUtil.raycastEntityArea(effect.range(level), user).filter { AiConfig.entities.shouldItHit(user,it,AiConfig.Entities.Options.NON_BOSS,this) }
+        val entityList = RaycasterUtil.raycastEntityArea(effect.range(level), user).filter { AiConfig.entities.shouldItHit(user,it, EntitiesConfig.Options.NON_BOSS,this) }
         if (entityList.isEmpty()) return false
         var minDist = 10000000.0
         var maxDist = 0.0

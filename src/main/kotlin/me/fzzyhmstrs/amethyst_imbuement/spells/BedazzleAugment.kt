@@ -7,7 +7,7 @@ import me.fzzyhmstrs.amethyst_core.scepter_util.ScepterTier
 import me.fzzyhmstrs.amethyst_core.scepter_util.SpellType
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.AugmentDatapoint
 import me.fzzyhmstrs.amethyst_core.scepter_util.augments.MiscAugment
-import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
+import me.fzzyhmstrs.amethyst_imbuement.config.EntitiesConfig
 import me.fzzyhmstrs.amethyst_imbuement.registry.RegisterStatus
 import me.fzzyhmstrs.fzzy_core.raycaster_util.RaycasterUtil
 import me.fzzyhmstrs.fzzy_core.trinket_util.EffectQueue
@@ -30,7 +30,7 @@ class BedazzleAugment: MiscAugment(ScepterTier.TWO,1) {
     override val baseEffect: AugmentEffect = super.baseEffect
                                                 .withDuration(1200,0,0)
                                                 .withRange(13.0,1.0)
-            
+
 
     override fun augmentStat(imbueLevel: Int): AugmentDatapoint {
         return AugmentDatapoint(SpellType.WIT,1500,85,
@@ -57,7 +57,7 @@ class BedazzleAugment: MiscAugment(ScepterTier.TWO,1) {
     ): Boolean {
         val hostileEntity: MutableList<LivingEntity> = mutableListOf()
         for (entity2 in entityList){
-            if (entity2 is HostileEntity && AiConfig.Entities.Options.NON_BOSS.shouldItHit(user,entity2,this)){
+            if (entity2 is HostileEntity && EntitiesConfig.Options.NON_BOSS.shouldItHit(user,entity2,this)){
                 hostileEntity.add(entity2)
             }
         }

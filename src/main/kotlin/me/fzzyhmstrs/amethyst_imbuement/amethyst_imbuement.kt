@@ -2,7 +2,6 @@
 
 package me.fzzyhmstrs.amethyst_imbuement
 
-import com.llamalad7.mixinextras.MixinExtrasBootstrap
 import me.fzzyhmstrs.amethyst_imbuement.compat.ModCompatHelper
 import me.fzzyhmstrs.amethyst_imbuement.config.AiConfig
 import me.fzzyhmstrs.amethyst_imbuement.registry.*
@@ -12,7 +11,6 @@ import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.random.Random
@@ -45,7 +43,7 @@ object AI: ModInitializer {
         RegisterParticle.registerParticleTypes()
         RegisterSound.registerAll()
         RegisterWorldgen.registerAll()
-        AiConfig.initConfig()
+        AiConfig.registerAll()
         RegisterModifier.registerAll()
         RegisterNetworking.registerServer()
     }
@@ -73,7 +71,6 @@ object AIClient: ClientModInitializer{
         RegisterParticle.registerParticleFactories()
         BaseHamsterArmorFeatureRenderer.HamsterArmorTextureIdsHolder.registerClient()
         RegisterNetworking.registerClient()
-        RegisterCommandClient.registerClient()
         AiConfig.registerClient()
         ModCompatHelper.registerPage()
     }
@@ -81,12 +78,4 @@ object AIClient: ClientModInitializer{
     fun aiRandom(): Random{
         return Random.createThreadSafe()
     }
-}
-
-object AIPreLaunch: PreLaunchEntrypoint{
-
-    override fun onPreLaunch() {
-        MixinExtrasBootstrap.init()
-    }
-
 }
