@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
 import me.fzzyhmstrs.fzzy_config.api.ConfigApi
+import me.fzzyhmstrs.fzzy_config.util.Walkable
 import me.fzzyhmstrs.fzzy_config.validation.minecraft.ValidatedIngredient
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt
@@ -20,7 +21,7 @@ open class ValidatedToolMaterial protected constructor(
     repairIngredientDefault: ValidatedIngredient
 )
     :
-    ToolMaterial
+    ToolMaterial, Walkable
 {
     var durability = durabilityDefault
     var miningSpeedMultiplier = miningSpeedDefault

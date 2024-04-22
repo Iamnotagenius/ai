@@ -1,6 +1,7 @@
 package me.fzzyhmstrs.amethyst_imbuement.material
 
 import me.fzzyhmstrs.fzzy_config.api.ConfigApi
+import me.fzzyhmstrs.fzzy_config.util.Walkable
 import me.fzzyhmstrs.fzzy_config.validation.minecraft.ValidatedIngredient
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedAny
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat
@@ -23,7 +24,7 @@ open class ValidatedArmorMaterial protected constructor(
     knockbackResistanceDefault: ValidatedFloat,
     toughnessDefault: ValidatedFloat)
     :
-    ArmorMaterial
+    ArmorMaterial, Walkable
 {
     private val BASE_DURABILITY = intArrayOf(13, 15, 16, 11)
 

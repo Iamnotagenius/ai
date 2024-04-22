@@ -93,18 +93,22 @@ class EntitiesConfig: Config(AI.identity("entities_config")) {
         return entity is PlayerEntity
     }
 
-    enum class Options{
-        NONE{
+    interface ShouldItHit{
+        fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean
+    }
+
+    enum class Options: ShouldItHit {
+        NONE {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return true
             }
         },
-        NON_BOSS{
+        NON_BOSS {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return NON_BOSS_HIT_CHECKER.shouldItHit(attacker, victim, args)
             }
         },
-        NON_VILLAGER{
+        NON_VILLAGER {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return NON_VILLAGER_HIT_CHECKER.shouldItHit(attacker, victim, args)
             }
@@ -121,22 +125,21 @@ class EntitiesConfig: Config(AI.identity("entities_config")) {
                 return if(victim is Angerable) victim.angryAt != null && victim.angryAt == attacker?.uuid else victim !is PassiveEntity
             }
         },
-        NON_FRIENDLY_NON_GOLEM{
+        NON_FRIENDLY_NON_GOLEM {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return NON_FRIENDLY.shouldItHit(attacker, victim, args) && NON_GOLEM.shouldItHit(attacker, victim, args)
             }
         },
-        HOSTILE_ONLY{
+        HOSTILE_ONLY {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return victim is Monster
             }
         },
-        NON_BOSS_NON_FRIENDLY{
+        NON_BOSS_NON_FRIENDLY {
             override fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean {
                 return NON_BOSS_HIT_CHECKER.shouldItHit(attacker, victim, args) && NON_FRIENDLY.shouldItHit(attacker, victim, args)
             }
         };
-        abstract fun shouldItHit(attacker: LivingEntity?, victim: Entity, vararg args: Any?): Boolean
 
         protected val NON_VILLAGER_HIT_CHECKER: ShouldItHitPredicate = MobCheckerBuilder.single(MobCheckers.NOT_VILLAGER)
 

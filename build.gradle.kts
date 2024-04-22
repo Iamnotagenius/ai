@@ -192,6 +192,7 @@ tasks {
         val patchouliVersion: String by project
         val fcVersion: String by project
         val acVersion: String by project
+        val fzzyConfigVersion: String by project
         inputs.property("version", project.version)
         inputs.property("id", base.archivesName.get())
         inputs.property("loaderVersion", loaderVersion)
@@ -200,6 +201,7 @@ tasks {
         inputs.property("patchouliVersion", patchouliVersion)
         inputs.property("fcVersion", fcVersion)
         inputs.property("acVersion", acVersion)
+        inputs.property("fzzyConfigVersion", fzzyConfigVersion)
         filesMatching("fabric.mod.json") {
             expand(
                 mutableMapOf(
@@ -210,7 +212,8 @@ tasks {
                     "trinketsVersion" to trinketsVersion,
                     "patchouliVersion" to patchouliVersion,
                     "fcVersion" to fcVersion,
-                    "acVersion" to acVersion))
+                    "acVersion" to acVersion,
+                    "fzzyConfigVersion" to fzzyConfigVersion))
         }
     }
     java {

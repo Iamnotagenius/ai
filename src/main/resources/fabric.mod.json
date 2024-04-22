@@ -72,6 +72,12 @@
     "trinkets": ">=${trinketsVersion}",
     "patchouli": ">=${patchouliVersion}",
     "fzzy_core": ">=${fcVersion}",
-    "amethyst_core": ">=${acVersion}"
+    "amethyst_core": ">=${acVersion}",
+    "fzzy_config": ">=${fzzyConfigVersion}"
+  },
+  "custom": {
+    "fzzy_config": [
+      "amethyst_imbuement"
+    ]
   }
 }
