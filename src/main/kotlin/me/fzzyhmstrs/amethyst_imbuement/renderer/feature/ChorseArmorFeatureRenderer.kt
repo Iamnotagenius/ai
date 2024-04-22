@@ -20,7 +20,7 @@ import net.minecraft.util.Identifier
 
 @Environment(value = EnvType.CLIENT)
 class ChorseArmorFeatureRenderer(context: FeatureRendererContext<ChorseEntity, ChorseEntityModel>, private val model: ChorseEntityModel)
-: 
+:
 FeatureRenderer<ChorseEntity, ChorseEntityModel>(context)
 {
 
@@ -65,7 +65,7 @@ FeatureRenderer<ChorseEntity, ChorseEntityModel>(context)
             p = 1.0f
         }
         val id = ENTITY_TEXTURE_CACHE.computeIfAbsent(horseArmorItem) {
-            (AI.identity("textures/entity/chorse/armor/chorse_armor_" + it.entityTexture.path.substring(ENTITY_TEXTURE_PREFIX_LENGTH)))
+            (AI.identity("textures/entity/chorse/armor/chorse_armor_" + try { it.entityTexture.path.substring(ENTITY_TEXTURE_PREFIX_LENGTH)} catch (e: Exception) { "fallback.png" }))
                 .takeIf { it1 -> MinecraftClient.getInstance().resourceManager.getResource(it1).isPresent } ?: FALLBACK_TEXTURE
         }
 
