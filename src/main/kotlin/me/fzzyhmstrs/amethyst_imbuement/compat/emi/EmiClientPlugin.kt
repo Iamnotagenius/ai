@@ -13,21 +13,21 @@ import me.fzzyhmstrs.amethyst_imbuement.util.ImbuingRecipe
 import me.fzzyhmstrs.fzzy_core.coding_util.FzzyPort
 
 
-object EmiClientPlugin: EmiPlugin{
+object EmiClientPlugin: EmiPlugin {
     private val IMBUING_WORKSTATION: EmiStack = EmiStack.of(RegisterBlock.IMBUING_TABLE.asItem())
     val IMBUING_CATEGORY = EmiRecipeCategory(IMBUING_WORKSTATION.id, IMBUING_WORKSTATION, AiSimplifiedRenderer(0,0))
     private val IMBUING_HANDLER = ImbuingRecipeHandler()
     private val ALTAR_WORKSTATION: EmiStack = EmiStack.of(RegisterBlock.CRYSTAL_ALTAR.asItem())
     val ALTAR_CATEGORY = EmiRecipeCategory(ALTAR_WORKSTATION.id, ALTAR_WORKSTATION, AiSimplifiedRenderer(16,0))
     private val ALTAR_HANDLER = AltarRecipeHandler()
-    
+
     override fun register(registry: EmiRegistry){
 
         val manager = registry.recipeManager
 
         registry.addCategory(IMBUING_CATEGORY)
         registry.addWorkstation(IMBUING_CATEGORY, IMBUING_WORKSTATION)
-        
+
         for (recipe in FzzyPort.listAllOfType(ImbuingRecipe.Type,manager)) {
             registry.addRecipe(ImbuingEmiRecipe(recipe))
         }
@@ -38,12 +38,12 @@ object EmiClientPlugin: EmiPlugin{
 
         registry.addCategory(ALTAR_CATEGORY)
         registry.addWorkstation(ALTAR_CATEGORY, ALTAR_WORKSTATION)
-        
+
         for (recipe in FzzyPort.listAllOfType(AltarRecipe.Type, manager)) {
             registry.addRecipe(AltarEmiRecipe(recipe))
         }
 
         registry.addRecipeHandler(RegisterHandler.CRYSTAL_ALTAR_SCREEN_HANDLER, ALTAR_HANDLER)
     }
-    
+
 }
