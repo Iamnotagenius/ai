@@ -10,6 +10,7 @@ import me.fzzyhmstrs.fzzy_config.validated_field.list.ValidatedIntList
 import me.fzzyhmstrs.fzzy_config.validated_field.list.ValidatedSeries
 import me.fzzyhmstrs.fzzy_config.validated_field.map.ValidatedStringBoolMap
 import me.fzzyhmstrs.fzzy_config.validated_field.map.ValidatedStringIntMap
+import net.minecraft.enchantment.Enchantment
 import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.item.ItemStack
@@ -148,14 +149,14 @@ object AiConfig
             @ReadMeText("readme.items.scroll.levels")
             var levels = ValidatedSeries(arrayOf(1,2,3,5,7),Int::class.java,{a,b-> b>a},"Spell levels need to increase from one to the next tier.")
         }
-        
+
         override fun generateNewClass(): Items {
             val items = this
             items.scepters.buildersMiningSpeed.validateAndSet(BuildersScepterToolMaterial.defaultMiningSpeed())
             return items
         }
     }
-    
+
     private val blocksHeader = buildSectionHeader("altars")
 
     class Blocks: ConfigClass(blocksHeader), OldClass<Blocks>{
@@ -309,9 +310,11 @@ object AiConfig
             return aiEnchantMaxLevels[id]?:fallback
         }
 
-        fun getVanillaMaxLevel(id: String, fallback: Int): Int{
-            if (disableIncreaseMaxLevels.get()) return fallback
-            return vanillaEnchantMaxLevels[id]?:fallback
+        fun getVanillaMaxLevel(enchant: Enchantment, fallback: Int): Int{
+            val id = Registry.ENCHANTMENT.getId(enchant)?.toString() ?: return fallback
+            val amount = vanillaEnchantMaxLevels[id]?:fallback
+            if (disableIncreaseMaxLevels.get() && amount > fallback) return fallback
+            return amount
         }
 
         @ReadMeText("readme.enchants.disableIncreaseMaxLevels")
@@ -319,7 +322,7 @@ object AiConfig
 
         @ReadMeText("readme.enchants.enabledEnchants")
         var enabledEnchants = ValidatedStringBoolMap(AiConfigDefaults.enabledEnchantments,{id,_ -> Identifier.tryParse(id) != null}, "Needs a valid registered enchantment identifier.")
-        
+
         @ReadMeText("readme.enchants.aiEnchantMaxLevels")
         var aiEnchantMaxLevels = ValidatedStringIntMap(AiConfigDefaults.aiEnchantmentMaxLevels,{ id, i -> Identifier.tryParse(id) != null && i > 0}, "Needs a valid registered enchantment identifier and a level greater than 0.")
 

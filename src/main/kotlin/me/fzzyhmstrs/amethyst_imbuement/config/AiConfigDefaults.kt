@@ -19,7 +19,7 @@ object AiConfigDefaults {
         "amethyst_imbuement:rain_of_thorns" to true,
         "amethyst_imbuement:vein_miner" to true
     )
-    
+
     internal val aiEnchantmentMaxLevels: Map<String,Int> = mapOf(
         "amethyst_imbuement:bulwark" to 1,
         "amethyst_imbuement:cleaving" to 3,
@@ -57,7 +57,7 @@ object AiConfigDefaults {
         "minecraft:respiration" to 5,
         "minecraft:sharpness" to 7,
         "minecraft:smite" to 7,
-        "minecraft:sweeping" to 5,
+        "minecraft:sweeping_edge" to 5,
         "minecraft:thorns" to 5,
         "minecraft:unbreaking" to 5
     )
