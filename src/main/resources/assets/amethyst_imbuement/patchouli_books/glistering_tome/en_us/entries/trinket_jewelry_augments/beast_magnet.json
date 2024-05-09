@@ -1,7 +1,7 @@
 {
 "name": "Beast Magnet Augment",
 "icon": "amethyst_imbuement:book_of_lore",
-"category": "amethyst_imbuement:trinket_totem_augments",
+"category": "amethyst_imbuement:trinket_jewelry_augments",
 "advancement": "amethyst_imbuement:progression/unlocks/jewelry_augments_unlock",
 "pages": [
 {
