@@ -1,0 +1,9 @@
+{
+  "parent": "emi:item/quarter_item",
+  "textures": {
+    "first": "amethyst_imbuement:item/blazing_gem",
+    "second": "amethyst_imbuement:item/brutal_gem",
+    "third": "amethyst_imbuement:item/inquisitive_gem",
+    "fourth": "amethyst_imbuement:item/mystical_gem"
+  }
+}
