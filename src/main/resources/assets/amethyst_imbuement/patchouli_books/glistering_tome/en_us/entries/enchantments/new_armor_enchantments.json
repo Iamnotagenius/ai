@@ -2,7 +2,6 @@
 "name": "New Armor Enchants",
 "icon": "amethyst_imbuement:ametrine_boots",
 "category": "amethyst_imbuement:enchantments",
-"advancement": "",
 "pages": [
 {
 "type": "patchouli:text",

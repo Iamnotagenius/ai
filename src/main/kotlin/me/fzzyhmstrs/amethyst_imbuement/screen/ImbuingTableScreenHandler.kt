@@ -220,7 +220,7 @@ class ImbuingTableScreenHandler(
                                             }
                                         }
                                         if (!bl1) {
-                                            tempResults.add(ImbuingResult(imbuingRecipe,power))
+                                            tempResults.add(ImbuingResult(imbuingRecipe, power))
                                         }
                                     } else if (!augCheck.first && augCheck.second) {
                                         val str = augment.getName(1).string

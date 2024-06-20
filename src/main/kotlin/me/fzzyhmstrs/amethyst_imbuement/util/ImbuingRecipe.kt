@@ -2,6 +2,7 @@ package me.fzzyhmstrs.amethyst_imbuement.util
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap
 import it.unimi.dsi.fastutil.ints.IntList
+import me.fzzyhmstrs.amethyst_core.item_util.AbstractAugmentBookItem
 import me.fzzyhmstrs.amethyst_core.modifier_util.AugmentModifier
 import me.fzzyhmstrs.amethyst_core.modifier_util.ModifierHelper
 import me.fzzyhmstrs.amethyst_core.scepter_util.addIfDistinct
@@ -10,8 +11,6 @@ import me.fzzyhmstrs.amethyst_imbuement.AI
 import me.fzzyhmstrs.amethyst_imbuement.item.Reactant
 import me.fzzyhmstrs.amethyst_imbuement.item.Reagent
 import me.fzzyhmstrs.amethyst_imbuement.item.SpellScrollItem
-import me.fzzyhmstrs.amethyst_imbuement.item.book.BookOfLoreItem
-import me.fzzyhmstrs.amethyst_imbuement.item.book.BookOfMythosItem
 import me.fzzyhmstrs.fzzy_core.coding_util.FzzyPort
 import me.fzzyhmstrs.fzzy_core.registry.ModifierRegistry
 import me.fzzyhmstrs.fzzy_core.trinket_util.base_augments.BaseAugment
@@ -123,7 +122,7 @@ class ImbuingRecipe(private val inputs: Array<Ingredient>,
             for (i in 0..12) {
                 val stacks = inputs[i].matchingStacks
                 for (stack in stacks){
-                    if (stack.item is BookOfLoreItem || stack.item is BookOfMythosItem){
+                    if (stack.item is AbstractAugmentBookItem){
                         val stackTest = inventory.getStack(i)
                         if (!stackTest.hasNbt()){
                             return false
