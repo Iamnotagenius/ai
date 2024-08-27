@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "amethyst_imbuement:enabled",
+      "id": "integration/green_items"
+    }
+  ],
   "replace": false,
   "values": [
     "amethyst_imbuement:xp_bush_seed",
