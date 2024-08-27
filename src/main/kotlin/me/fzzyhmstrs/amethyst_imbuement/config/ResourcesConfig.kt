@@ -14,6 +14,6 @@ class ResourcesConfig: Config(AI.identity("resources_config")){
     }
 
     @RequiresRestart
-    var disabledResources = ValidatedList.ofString("optional/iridescent_scepter_imbuing","optional/lustrous_scepter_imbuing")
+    var disabledResources = ValidatedList.ofString("optional/iridescent_scepter_imbuing", "optional/lustrous_scepter_imbuing")
 
 }

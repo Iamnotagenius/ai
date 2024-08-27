@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "amethyst_imbuement:enabled",
+      "id": "optional/citrine_crystals"
+    }
+  ],
   "replace": false,
   "values": [
     "amethyst_imbuement:citrine"

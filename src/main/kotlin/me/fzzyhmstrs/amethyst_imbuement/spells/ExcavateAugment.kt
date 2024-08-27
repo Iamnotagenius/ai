@@ -46,8 +46,8 @@ class ExcavateAugment: ScepterAugment(ScepterTier.ONE,25) {
             if (state.isIn(RegisterTag.EXCAVATE_BLACKLIST)) return false
             if (state.getHardness(world,hit.blockPos) == -1.0f) return false
             if (canBreak(state, level)) {
-                state.block.onBreak(world,hit.blockPos,state,user)
-                if (world.breakBlock(hit.blockPos,true,user)) {
+                state.block.onBreak(world, hit.blockPos, state, user)
+                if (world.breakBlock(hit.blockPos,true, user)) {
                     state.block.onBroken(world,hit.blockPos,state)
                     val group = state.soundGroup
                     val sound = group.breakSound
